@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Google_Sans } from "next/font/google";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 export default function Auth() {
@@ -10,7 +11,7 @@ export default function Auth() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
-
+  const Router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({
@@ -19,6 +20,7 @@ export default function Auth() {
       password,
       ...(isSignUp && { confirmPassword }),
     });
+    Router.push("/dashboard");
   };
 
   return (
